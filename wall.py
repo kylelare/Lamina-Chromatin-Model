@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 filename1 = 'C21-GM12878-init-snap.gro' #Snapshot of collapsed chromosome 21 of human GM12878 lymphoblastoid cells
-seqfile = 'seq_C21.txt' #Chromosome 21 Sequence file
+seqfile = 'seq_C21.txt' #Chromosome 21 Sequence file obtained from Nucleome Data Bank (https://ndb.rice.edu/)
 file_seq = 'seqwall.txt' #Chromosome 21 Sequence file with wall beads (to be generated)
 
 #Finding center of mass of system
