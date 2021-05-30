@@ -1,22 +1,11 @@
 import math
 import numpy as np
-import argparse
-import sys
 
-parser = argparse.ArgumentParser(description='wall builder',prog='wall')
-#parser.add_argument('-s', action='store', default=1.0, dest='arg_s', help='Sigma value {float} (default: %(default)s)') 
-parser.add_argument('-dens', action='store', nargs=1, dest='arg_dens',required=False, default=1.0,  help='Density of Wall Beads: {int}/(unit area of wall)')
+filename1 = 'C21-GM12878-init-snap.gro' #Snapshot of collapsed chromosome 21 of human GM12878 lymphoblastoid cells
+seqfile = 'seq_C21.txt' #Chromosome 21 Sequence file
+file_seq = 'seqwall.txt' #Chromosome 21 Sequence file with wall beads (to be generated)
 
-try:
-    arguments = parser.parse_args()
-    print('Density:', arguments.arg_dens, '/unit area of wall')
-except IOError:
-    msg = sys.msg_info()[1]
-    parser.error(str(msg))                    
-
-filename1 = 'C21-GM12878-init-snap.gro'
-file_seq = 'seqwall.txt'
-seqfile = 'seq_C21.txt'
+#Finding center of mass of system
 xlist = list()
 ylist = list()
 zlist = list()
@@ -50,20 +39,8 @@ for i in plist:
 r = (max(dlist))
 print(r)
 beadlist =list()
-# Wall in Y-Z plane
-blc = (cm[0]+r,cm[1]-r,cm[2]-r)
-brc = (cm[0]+r,cm[1]+r,cm[2]-r)
-tlc = (cm[0]+r,cm[1]-r,cm[2]+r)
-trc = (cm[0]+r,cm[1]+r,cm[2]+r)
-nwallx =10
-nwally=10
-"""
-for i in range(nwallx):
-    for j in range(nwally):
-        #beadlist.append[cm[0]+r,cm[1]-r+i,cm[2]-r+j]
-        beadlist.append([blc[0], blc[1]+i, blc[2]+j])
-"""
-#print(beadlist)
+
+#Generating spherical wall of monomers (representing lamina proteins) to surround the chromosome
 sigma=1.0
 a=np.pi*sigma**2/4
 N=4*np.pi*r**2/a
@@ -85,7 +62,8 @@ for m in range(M_theta):
         Nw+=1
 
 print(N, Nw)
-#i = range(100)
+
+#Updating snapshot file to include the wall for GROMACS
 with open('wall-init-snap.gro', 'w') as G:
     G.write("Chromatin\n{:6d}\n".format(Nchr+Nw))
     for line in open(filename1):
@@ -97,7 +75,8 @@ with open('wall-init-snap.gro', 'w') as G:
         G.write(out)
     with open(filename1) as f:
         G.write(list(f)[-1])
-
+        
+#Updating restraint file to include the wall for GROMACS
 with open('walls-restraint.gro', 'w') as F:
     F.write('Chromatin\n{:6d}\n'.format(Nchr+Nw))
     with open('C21-GM12878-restraint.gro','r') as res:
@@ -113,6 +92,7 @@ with open('walls-restraint.gro', 'w') as F:
     with open('C21-GM12878-restraint.gro') as f:
         F.write(list(f)[-1])
 
+#Appennding original chromatin sequence to a list
 def createList(r1,r2):
     return [item for item in range(r1,r2+1)]
 chromatinlist = list()
@@ -128,7 +108,8 @@ with open(seqfile) as Q:
                     chromatin = str(row[1])
                     #print(chromatin)
                     chromatinlist.append(str(chromatin))
-#print(chromatinlist)
+
+#Creating new sequence file that includes newly introduced the wall monomers
 with open('seqwall.txt', 'w') as H:
     for index in range(len(column1)):
         #print(int(index))
