@@ -9,6 +9,8 @@ seq_C21.txt is a text file containing all of the chromatin subtypes making up ch
 
 If you want to create your own randomized sequence file instead of getting one from the Nucleome Data Bank, you can do that using the seqgen.py script.
 
+dirmakr.sh will create an organized directory system and run simulations in them. $cx is the parameter for the the heterochromatin-lamina interaction strength (0.0 = no interaction, 0.2 = average interaction, 0.4 = strong interaction). The #SBATCH lines can be removed or filled out depending on if you choose to run your simulations using slurm or not.
+
 groaverage.py will average the positions of heterochromatin across each simulation trajectory and histogramplot.py will plot the fraction of heterochromatin interaction with the wall and the movement of heterochromatin towards the wall for each interaction strength
 
 I am still cleaning up and assembling all of the files that will be uploaded here so this repository is currently a work in progress.
