@@ -3,10 +3,12 @@ This repository contains all of the files associated with the Lamina-Chromatin M
 
 In order to run this model you will need a copy of Gaming.py which can be obtained from https://ndb.rice.edu/ and in addition to that you will also need GROMACS to run the simulations on your computer.
 
-Wall.py is the script that creates the simulated nuclear lamina to surround a chromosome. It requires a sequence input file, and two simulation files (the snapshot and the restraint file mentioned in wall.py) which are obtained from performing an initial collapse of the chromosme using the Minimal Chromatin Model in GROMACS.
+wall.py is the script that creates the simulated nuclear lamina to surround a chromosome. It requires a sequence input file, and two simulation files (the snapshot and the restraint file mentioned in wall.py) which are obtained from performing an initial collapse of the chromosme using the Minimal Chromatin Model in GROMACS.
 
-Seq_C21.txt is a text file containing all of the chromatin subtypes making up chromosome 21 of human GM12878 lymphoblastoid cells and is a required input of wall.py so that the new monomers making up the nuclear lamina can be added to it in order for GROMACS to function properly during simulations. Sequence files for chromosome 21 and other chromosome can be found using the Nucleome Data Bank found at (https://ndb.rice.edu/)
+seq_C21.txt is a text file containing all of the chromatin subtypes making up chromosome 21 of human GM12878 lymphoblastoid cells and is a required input of wall.py so that the new monomers making up the nuclear lamina can be added to it in order for GROMACS to function properly during simulations. Sequence files for chromosome 21 and other chromosome can be found using the Nucleome Data Bank found at (https://ndb.rice.edu/)
 
 If you want to create your own randomized sequence file instead of getting one from the Nucleome Data Bank, you can do that using the seqgen.py script.
+
+groaverage.py will average the positions of heterochromatin across each simulation trajectory and histogramplot.py will plot the fraction of heterochromatin interaction with the wall and the movement of heterochromatin towards the wall for each interaction strength
 
 I am still cleaning up and assembling all of the files that will be uploaded here so this repository is currently a work in progress.
