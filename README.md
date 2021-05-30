@@ -15,4 +15,6 @@ groaverage.py will average the positions of heterochromatin across each simulati
 
 averagehic.py will average hi-c matrices and create a new hi-c map png file showing the averaged hi-x matrix.
 
+difhic.py will plot the differences in each of the hi-c matrices which is an effective method for showing changes in chromosome compartmentalization at each interaction strength
+
 I am still cleaning up and assembling all of the files that will be uploaded here so this repository is currently a work in progress.
