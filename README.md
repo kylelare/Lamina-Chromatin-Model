@@ -13,6 +13,8 @@ dirmakr.sh will create an organized directory system and run simulations in them
 
 groaverage.py will average the positions of heterochromatin across each simulation trajectory and histogramplot.py will plot the fraction of heterochromatin interaction with the wall and the movement of heterochromatin towards the wall for each interaction strength
 
+radialdensityradii.py will obtain the radii for each chromatin subtype within the system and write them to several text files. These text files will be used as inputs for the radialdensitycalc.py which will histogram the data and perform the additional calculations necessary for obtaining the radial densities for each chromatin subtype. It will also generate a new set of files specifically for plotting the radial densities with the radialdensityplot.py script.
+
 averagehic.py will average hi-c matrices and create a new hi-c map png file showing the averaged hi-x matrix.
 
 difhic.py will plot the differences in each of the hi-c matrices which is an effective method for showing changes in chromosome compartmentalization at each interaction strength
