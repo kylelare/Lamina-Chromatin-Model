@@ -1,7 +1,7 @@
 # Lamina-Chromatin-Model
 This repository contains all of the files associated with the Lamina-Chromatin Model I developed with Dr. Sumitabha Brahmachari at Rice University.
 
-In order to run this model you will need a copy of Gaming.py which can be obtained from https://ndb.rice.edu/ and in addition to that you will also need GROMACS to run the simulations on your computer.
+In order to run this model you will need a copy of Gaming.py and Hi-C.py which can be obtained from https://ndb.rice.edu/ and in addition to that you will also need GROMACS to run the simulations on your computer.
 
 wall.py is the script that creates the simulated nuclear lamina to surround a chromosome. It requires a sequence input file, and two simulation files (the snapshot and the restraint file mentioned in wall.py) which are obtained from performing an initial collapse of the chromosme using the Minimal Chromatin Model in GROMACS.
 
