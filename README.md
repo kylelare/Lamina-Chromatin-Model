@@ -13,4 +13,6 @@ dirmakr.sh will create an organized directory system and run simulations in them
 
 groaverage.py will average the positions of heterochromatin across each simulation trajectory and histogramplot.py will plot the fraction of heterochromatin interaction with the wall and the movement of heterochromatin towards the wall for each interaction strength
 
+averagehic.py will average hi-c matrices and create a new hi-c map png file showing the averaged hi-x matrix.
+
 I am still cleaning up and assembling all of the files that will be uploaded here so this repository is currently a work in progress.
